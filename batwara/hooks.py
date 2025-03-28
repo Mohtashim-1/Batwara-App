@@ -6,6 +6,9 @@ app_email = "shoaibmohtashim973@gmail.com"
 app_license = "mit"
 # required_apps = []
 
+# Generate type annotations
+
+export_python_type_annotations = True
 # Includes in <head>
 # ------------------
 
