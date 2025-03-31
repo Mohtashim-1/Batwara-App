@@ -1,4 +1,3 @@
-
 name: CI
 
 on:
@@ -36,41 +35,39 @@ jobs:
         options: --health-cmd="mariadb-admin ping" --health-interval=5s --health-timeout=2s --health-retries=3
 
     steps:
-      - name: Clone
+      - name: Clone Repository
         uses: actions/checkout@v3
 
-      - name: Find tests
+      - name: Find Tests
         run: |
           echo "Finding tests"
-          grep -rn "def test" > /dev/null
+          grep -rn "def test" || echo "No tests found"
 
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
           check-latest: true
 
-      
-      - name: Cache pip
+      - name: Cache Python Dependencies (pip)
         uses: actions/cache@v3
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('**/*requirements.txt', '**/pyproject.toml', '**/setup.py', '**/setup.cfg') }}
           restore-keys: |
             ${{ runner.os }}-pip-
-            ${{ runner.os }}-
 
-      - name: Get yarn cache directory path
+      - name: Get Yarn Cache Directory Path
         id: yarn-cache-dir-path
         run: 'echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT'
 
-      - uses: actions/cache@v3
-        id: yarn-cache
+      - name: Cache Yarn Packages
+        uses: actions/cache@v3
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -80,15 +77,14 @@ jobs:
       - name: Install MariaDB Client
         run: sudo apt-get update && sudo apt-get install -y mariadb-client
             
-
-      - name: Setup
+      - name: Setup Frappe Bench
         run: |
           pip install frappe-bench
           bench init --skip-redis-config-generation --skip-assets --python "$(which python)" ~/frappe-bench
           mariadb --host 127.0.0.1 --port 3306 -u root -proot -e "SET GLOBAL character_set_server = 'utf8mb4'"
           mariadb --host 127.0.0.1 --port 3306 -u root -proot -e "SET GLOBAL collation_server = 'utf8mb4_unicode_ci'"
 
-      - name: Install
+      - name: Install Batwara App
         working-directory: /home/runner/frappe-bench
         run: |
           bench get-app batwara $GITHUB_WORKSPACE
@@ -98,6 +94,16 @@ jobs:
           bench build
         env:
           CI: 'Yes'
+
+      - name: Ensure `www` Directory Exists
+        run: mkdir -p /home/runner/frappe-bench/apps/batwara/www
+
+      - name: Copy Frontend File
+        run: cp /home/runner/frappe-bench/apps/batwara/public/frontend/index.html /home/runner/frappe-bench/apps/batwara/www/frontend.html
+
+      - name: Start Bench
+        working-directory: /home/runner/frappe-bench
+        run: nohup bench start &
 
       - name: Run Tests
         working-directory: /home/runner/frappe-bench
