@@ -1,0 +1,107 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-03-31 21:43:06.731969",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "amount",
+  "expense",
+  "column_break_jcik",
+  "currency",
+  "section_break_eybl",
+  "credit_user",
+  "column_break_kthu",
+  "debit_user",
+  "section_break_f2uk",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_f2uk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Split Ledger Entry",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "expense",
+   "fieldtype": "Link",
+   "label": "Expense",
+   "options": "Expense"
+  },
+  {
+   "fieldname": "column_break_jcik",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "section_break_eybl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Who owes?",
+   "fieldname": "credit_user",
+   "fieldtype": "Link",
+   "label": "Credit User",
+   "options": "User"
+  },
+  {
+   "description": "To whom?",
+   "fieldname": "debit_user",
+   "fieldtype": "Link",
+   "label": "Debit User",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_kthu",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-03-31 21:45:49.402510",
+ "modified_by": "Administrator",
+ "module": "Batwara",
+ "name": "Split Ledger Entry",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
