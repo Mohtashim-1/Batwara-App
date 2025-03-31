@@ -26,6 +26,11 @@
 
       <Button :link="'/new-expense'" variant="solid" theme="blue">Add Expense</Button>
   </div>
+
+  <div class="mt-5">
+
+    <PageHeader heading="Summary" />
+  </div>
 </template>
 
 <script setup>

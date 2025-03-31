@@ -20,5 +20,6 @@ class SplitLedgerEntry(Document):
 		currency: DF.Link | None
 		debit_user: DF.Link | None
 		expense: DF.Link | None
+		name: DF.Int | None
 	# end: auto-generated types
 	pass

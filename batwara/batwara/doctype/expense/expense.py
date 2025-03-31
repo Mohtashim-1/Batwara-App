@@ -44,4 +44,20 @@ class Expense(Document):
 		for s in self.expense_split:
 			s.amount = split_amount
 
+	def on_submit(self):
+		self.create_ledger_entry()
+
+	def create_ledger_entry(self):
+		for split in self.expense_split:
+			if split.user == self.paid_by:
+				continue
+			
+			le = frappe.new_doc("Split Ledger Entry")
+			le.amount = split.amount
+			le.currency = split.currency
+			le.credit_user = split.user
+			le.debit_user = self.paid_by
+			le.expense = self.name
+			le.insert().submit()
+
 

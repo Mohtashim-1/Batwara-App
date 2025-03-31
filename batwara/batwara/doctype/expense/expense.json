@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:EXP-{YY}-{MM}-{###}",
  "creation": "2025-03-28 22:03:14.520469",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -107,11 +108,17 @@
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "links": [],
- "modified": "2025-03-28 22:17:49.249809",
+ "links": [
+  {
+   "link_doctype": "Split Ledger Entry",
+   "link_fieldname": "expense"
+  }
+ ],
+ "modified": "2025-03-31 21:53:57.455917",
  "modified_by": "Administrator",
  "module": "Batwara",
  "name": "Expense",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
@@ -130,5 +137,8 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
 }

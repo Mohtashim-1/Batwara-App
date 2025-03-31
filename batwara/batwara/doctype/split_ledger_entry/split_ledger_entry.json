@@ -1,6 +1,6 @@
 {
  "actions": [],
- "allow_rename": 1,
+ "autoname": "autoincrement",
  "creation": "2025-03-31 21:43:06.731969",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -35,6 +35,8 @@
    "fieldname": "amount",
    "fieldtype": "Currency",
    "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Amount",
    "non_negative": 1,
    "reqd": 1
@@ -42,6 +44,9 @@
   {
    "fieldname": "expense",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Expense",
    "options": "Expense"
   },
@@ -63,6 +68,9 @@
    "description": "Who owes?",
    "fieldname": "credit_user",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Credit User",
    "options": "User"
   },
@@ -70,6 +78,9 @@
    "description": "To whom?",
    "fieldname": "debit_user",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Debit User",
    "options": "User"
   },
@@ -81,10 +92,11 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-03-31 21:45:49.402510",
+ "modified": "2025-03-31 21:57:19.998283",
  "modified_by": "Administrator",
  "module": "Batwara",
  "name": "Split Ledger Entry",
+ "naming_rule": "Autoincrement",
  "owner": "Administrator",
  "permissions": [
   {
@@ -103,5 +115,8 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
 }
