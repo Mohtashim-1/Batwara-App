@@ -7,3 +7,4 @@ node_modules
 __pycache__
 batwara/www/frontend.html
 batwara/public/frontend/
+batwara/public/frontend/index.html
