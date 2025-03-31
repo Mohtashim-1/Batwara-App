@@ -5,7 +5,7 @@ import { userResource } from '@/data/user'
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'Dashboard',
     component: () => import('@/pages/Dashboard.vue'),
   },
   {
@@ -13,11 +13,6 @@ const routes = [
     name: 'CreateExpense',
     component: () => import('@/pages/CreateNewExpense.vue'),
   },
-  // {
-  //   name: 'Login',
-  //   path: '/account/login',
-  //   component: () => import('@/pages/Login.vue'),
-  // },
 ]
 
 let router = createRouter({
