@@ -4,11 +4,11 @@ name: CI
 on:
   push:
     branches:
-      - develop
+      - main
   pull_request:
 
 concurrency:
-  group: develop-batwara-${{ github.event.number }}
+  group: main-batwara-${{ github.event.number }}
   cancel-in-progress: true
 
 jobs:
