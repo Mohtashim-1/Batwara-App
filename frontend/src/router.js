@@ -8,6 +8,11 @@ const routes = [
     name: 'Home',
     component: () => import('@/pages/Dashboard.vue'),
   },
+  {
+    path: '/new-expense',
+    name: 'CreateExpense',
+    component: () => import('@/pages/CreateNewExpense.vue'),
+  },
   // {
   //   name: 'Login',
   //   path: '/account/login',
